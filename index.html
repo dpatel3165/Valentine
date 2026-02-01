@@ -21,22 +21,24 @@
 
     .card {
       background: white;
-      padding: 40px;
-      border-radius: 20px;
+      padding: 60px;
+      border-radius: 25px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      max-width: 380px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      width: 520px;          /* BIGGER WIDTH */
+      height: 420px;         /* BIGGER HEIGHT */
       position: relative;
     }
 
     h1 {
       color: #e63946;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+      font-size: 28px;
     }
 
     button {
-      font-size: 18px;
-      padding: 12px 25px;
+      font-size: 20px;
+      padding: 14px 30px;
       margin: 10px;
       border-radius: 30px;
       border: none;
@@ -55,13 +57,13 @@
     }
 
     .message {
-      margin-top: 20px;
-      font-size: 18px;
+      margin-top: 25px;
+      font-size: 20px;
       color: #333;
     }
 
     img {
-      margin-top: 20px;
+      margin-top: 25px;
       max-width: 100%;
       border-radius: 15px;
       display: none;
@@ -88,15 +90,15 @@
     const noBtn = document.getElementById("noBtn");
     const card = document.querySelector(".card");
 
-    // Initial position
-    noBtn.style.top = "200px";
-    noBtn.style.left = "120px";
+    // Initial position of No button
+    noBtn.style.top = "260px";
+    noBtn.style.left = "200px";
 
     noBtn.addEventListener("mouseenter", () => {
       const cardRect = card.getBoundingClientRect();
 
-      const maxX = cardRect.width - noBtn.offsetWidth;
-      const maxY = cardRect.height - noBtn.offsetHeight;
+      const maxX = cardRect.width - noBtn.offsetWidth - 20;
+      const maxY = cardRect.height - noBtn.offsetHeight - 20;
 
       const randomX = Math.random() * maxX;
       const randomY = Math.random() * maxY;
@@ -112,8 +114,8 @@
       document.getElementById("friendsGif").style.display = "block";
 
       confetti({
-        particleCount: 200,
-        spread: 80,
+        particleCount: 220,
+        spread: 90,
         origin: { y: 0.6 }
       });
     }
