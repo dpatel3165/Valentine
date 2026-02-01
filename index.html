@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Bianka, Will You Be My Valentine?</title>
 
-  <!-- Confetti library -->
+  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
@@ -16,6 +16,7 @@
       align-items: center;
       justify-content: center;
       margin: 0;
+      overflow: hidden;
     }
 
     .card {
@@ -25,6 +26,7 @@
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       max-width: 380px;
+      position: relative;
     }
 
     h1 {
@@ -49,6 +51,7 @@
     .no {
       background-color: #ccc;
       color: #333;
+      position: absolute;
     }
 
     .message {
@@ -72,34 +75,47 @@
     <h1>Bianka, will you be my Valentine? 💕</h1>
 
     <button class="yes" onclick="sayYes()">Yes 💖</button>
-    <button class="no" onclick="sayNo()">No (a bit shy)</button>
+    <button class="no" id="noBtn">No (a bit shy)</button>
 
     <div class="message" id="message"></div>
 
-    <!-- Friends YASS GIF -->
     <img id="friendsGif"
       src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
       alt="Friends YASS dancing">
   </div>
 
   <script>
+    const noBtn = document.getElementById("noBtn");
+    const card = document.querySelector(".card");
+
+    // Initial position
+    noBtn.style.top = "200px";
+    noBtn.style.left = "120px";
+
+    noBtn.addEventListener("mouseenter", () => {
+      const cardRect = card.getBoundingClientRect();
+
+      const maxX = cardRect.width - noBtn.offsetWidth;
+      const maxY = cardRect.height - noBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+
     function sayYes() {
       document.getElementById("message").innerHTML =
         "YASS!!! 💘 I can’t wait to be your Valentine, Bianka 🥰";
 
       document.getElementById("friendsGif").style.display = "block";
 
-      // Confetti burst 🎉
       confetti({
         particleCount: 200,
         spread: 80,
         origin: { y: 0.6 }
       });
-    }
-
-    function sayNo() {
-      document.getElementById("message").innerHTML =
-        "That’s okay… I know you’re just a bit shy 😉💗";
     }
   </script>
 
