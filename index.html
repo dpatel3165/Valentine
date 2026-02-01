@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bianka, Will You Be My Valentine?</title>
+
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 380px;
+    }
+
+    h1 {
+      color: #e63946;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .yes {
+      background-color: #e63946;
+      color: white;
+    }
+
+    .no {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 15px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Bianka, will you be my Valentine? 💕</h1>
+
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" onclick="sayNo()">No (a bit shy)</button>
+
+    <div class="message" id="message"></div>
+
+    <!-- Friends YASS GIF -->
+    <img id="friendsGif"
+      src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+      alt="Friends YASS dancing">
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById("message").innerHTML =
+        "YASS!!! 💘 I can’t wait to be your Valentine, Bianka 🥰";
+
+      document.getElementById("friendsGif").style.display = "block";
+
+      // Confetti burst 🎉
+      confetti({
+        particleCount: 200,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function sayNo() {
+      document.getElementById("message").innerHTML =
+        "That’s okay… I know you’re just a bit shy 😉💗";
+    }
+  </script>
+
+</body>
+</html>
